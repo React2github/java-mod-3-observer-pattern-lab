@@ -4,14 +4,18 @@ import java.util.List;
 public class HotelManager {
           public static void main(String[] args) {
              Logger.getInstance().log("Managing hotel...");
-
-             // create hotel rooms
              List<HotelRoom> hotelRooms = new ArrayList<HotelRoom>();
-             // create hotel floors
-             // add hotel rooms to hotel floors
-             // take actions on rooms and floors and examine your output to ensure you implemented the desired
-             // behaviors
-             // create hotel email and notification services
+             List<HotelFloor> hotelFloors = new ArrayList<HotelFloor>();
+             // create 3 floors
+             HotelRoom hotelroom1 = new HotelRoom();
+             HotelFloor hotelFloor1 = new HotelFloor();
+             hotelFloor1.addHotelRoom(hotelroom1);
+             hotelFloors.add(hotelFloor1);
+
+             // add 5 hotel rooms to each floors
+             // Give each floor a unique #, and each room on floor a unique #
+             // Check 4 guests into the hotel 
+             // Return output that shows guest checkedin, send email, 
              HotelEmailService emailService = new HotelEmailService();
              HotelPushNotificationService notificationService = new HotelPushNotificationService();
              // initialize hotel email and notification services
@@ -20,5 +24,11 @@ public class HotelManager {
                 hotelRoom.addCheckinObserver(emailService);
                 hotelRoom.addCheckinObserver(notificationService);
              });
+             hotelFloors.forEach((hotelfloor) -> {
+               hotelfloor.addCheckinObserver(emailService);
+               hotelfloor.addCheckinObserver(notificationService);
+            });
+            hotelFloor1.checkIn("Adams family");
+            
           }
        }
