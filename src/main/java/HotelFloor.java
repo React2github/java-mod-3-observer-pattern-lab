@@ -27,7 +27,7 @@ class HotelFloor implements HotelRoomInterface {
     public void checkIn(String guestName) {
         Logger.getInstance().log(guestName + " has been checked in");
         checkinObservers.forEach((checkInObserver) -> 
-            checkInObserver.update(guestName));
+        checkInObserver.update(guestName));
     }
 
     public void addCheckinObserver(RoomCheckinObserver checkinObserver) {
